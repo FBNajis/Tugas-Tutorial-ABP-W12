@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    // Kolom yang boleh diisi secara massal
+    use HasFactory;
+
     protected $fillable = ['name', 'description'];
 
-    // Relasi ke tabel products
+    // Relasi: satu kategori bisa punya banyak produk
     public function products()
     {
         return $this->hasMany(Product::class);

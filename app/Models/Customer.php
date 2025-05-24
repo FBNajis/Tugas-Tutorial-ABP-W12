@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends Model
 {
-    // Kolom yang boleh diisi secara massal
+    use HasFactory;
+
     protected $fillable = ['name', 'email', 'phone', 'address'];
 
-    // Relasi ke tabel transactions
+    // Relasi: satu customer bisa melakukan banyak transaksi
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
